@@ -31,7 +31,7 @@ const SideBar = () => {
             className={classes.avatar}
             src="/images/profiles/no_profile.png" />
         </Link>
-        <Typography className={classes.nameText} variant="h7">
+        <Typography className={classes.nameText} variant="h6">
           User name
         </Typography>
         <Typography className={classes.bioText} variant="caption">
@@ -39,6 +39,15 @@ const SideBar = () => {
         </Typography>
       </div>
       <Divider className={classes.profileDivider} />
+
+      <List>
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon><i className={'material-icons'}>info</i></ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
 
       <Divider className={classes.listDivider} />
       <List

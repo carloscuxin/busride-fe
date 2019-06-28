@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Table from '../../DataDisplay/Table';
-import Dashboard from '../../../layout/Dashboard/Dashboard';
+import { Dashboard as DashboardLayout } from '../../../layout/index';
 
 const Index = () => {
   const [state, getCompanies] = useState({
@@ -21,9 +21,9 @@ const Index = () => {
   }, []);
 
   return (
-    <Dashboard title="Companies">
+    <DashboardLayout title="Companies">
       <Table data={state} />
-    </Dashboard>
+    </DashboardLayout>
   )
 }
 

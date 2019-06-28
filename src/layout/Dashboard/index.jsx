@@ -5,9 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // Own Components
 import styles from './styles';
-import TopBar from './components/TopBar/TopBar';
-import SideBar from './components/SideBar/SideBar';
-import Footer from './components/Footer/Footer';
+import { SideBar, TopBar, Footer } from './components';
 
 
 const Dashboard = (props) => {

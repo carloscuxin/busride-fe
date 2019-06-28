@@ -32,6 +32,7 @@ export default makeStyles(theme => ({
     height: '100px'
   },
   nameText: {
+    fontFamily: 'arial',
     fontWeight: 'bold',
     marginTop: theme.spacing(2)
   },
@@ -57,7 +58,7 @@ export default makeStyles(theme => ({
       }
     },
     '& + &': {
-      marginTop: theme.spacing.unit
+      marginTop: theme.spacing()
     }
   },
   activeListItem: {
