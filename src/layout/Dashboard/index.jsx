@@ -12,11 +12,11 @@ const Dashboard = (props) => {
   const classes = styles();
   const [isOpenDrawer, setStatusDrawer] = React.useState(true);
 
-  function handleDrawerOpen() {
+  const handleDrawerOpen = () => {
     setStatusDrawer(true);
   }
 
-  function handleDrawerClose() {
+  const handleDrawerClose = () => {
     setStatusDrawer(false);
   }
 

@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
-
 export default makeStyles(theme => ({
   logoBusride: {
     display: 'flex',
@@ -49,12 +47,12 @@ export default makeStyles(theme => ({
   listItem: {
     cursor: 'pointer',
     '&:hover': {
-      backgroundColor: theme.palette.primary.light,
-      borderLeft: `4px solid ${theme.palette.primary.main}`,
-      borderRadius: '4px',
+      backgroundColor: theme.palette.grey[150],
+      borderLeft: '5px solid #4D92C8',
+      borderRadius: '2px',
       '& $listItemIcon': {
-        color: theme.palette.primary.main,
-        marginLeft: '-4px'
+        color: '#4D92C8',
+        marginLeft: '-5px'
       }
     },
     '& + &': {
@@ -62,19 +60,20 @@ export default makeStyles(theme => ({
     }
   },
   activeListItem: {
-    borderLeft: `4px solid ${theme.palette.primary.main}`,
-    borderRadius: '4px',
-    backgroundColor: theme.palette.primary.light,
+    borderLeft: '5px solid #4D92C8',
+    borderRadius: '2px',
+    backgroundColor: theme.palette.grey[150],
     '& $listItemText': {
-      color: theme.palette.text.primary
+      color: theme.palette.text.primary,
+      fontWeight: '550'
     },
     '& $listItemIcon': {
-      color: theme.palette.primary.main,
-      marginLeft: '-4px'
+      color: '#4D92C8',
+      marginLeft: '-5px',
     }
   },
   listItemIcon: {
-    marginRight: 0
+    marginRight: -20
   },
   listItemText: {
     fontWeight: 500,
@@ -83,37 +82,5 @@ export default makeStyles(theme => ({
   listDivider: {
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(2)
-  },
-
-  
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
   },
 }));

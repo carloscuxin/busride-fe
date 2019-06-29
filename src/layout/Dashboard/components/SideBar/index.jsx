@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 // Material components
 import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Typography } from '@material-ui/core';
@@ -8,6 +9,16 @@ import styles from './styles';
 
 const SideBar = () => {
   const classes = styles();
+  const menuList = [
+    { label: 'Dashboard', title: 'Dashboard', url: '/', icon: 'dashboard' },
+    { label: 'Vehicles', title: 'Vehicles', url: '/vehicles', icon: 'directions_bus' },
+    { label: 'Companies', title: 'Companies', url: '/companies', icon: 'business' },
+  ];
+
+  const isLinkActive = (linkUrl) => {
+    const url = window.location.pathname;
+    return (url === linkUrl) ? true : false;
+  };
 
   return (
     <nav>
@@ -40,16 +51,27 @@ const SideBar = () => {
       </div>
       <Divider className={classes.profileDivider} />
 
-      <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon><i className={'material-icons'}>info</i></ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-
+      {/* Lista de menu */}
+      <List component="div" disablePadding>
+        {menuList.map((menu, index) => (
+          <ListItem
+            key={index}
+            className={clsx(
+              isLinkActive(menu.url) ? classes.activeListItem : null,
+              classes.listItem
+            )}
+            component={menu.url && Link}
+            to={menu.url} >
+            <ListItemIcon className={classes.listItemIcon}>
+              <i className={'material-icons'}>{menu.icon}</i>
+            </ListItemIcon>
+            <ListItemText classes={{ primary: classes.listItemText }} primary={menu.label} />
+          </ListItem>
+        ))}
+      </List>
       <Divider className={classes.listDivider} />
+      
+      {/* Lista de soporte */}
       <List
         component="div"
         disablePadding
@@ -71,23 +93,6 @@ const SideBar = () => {
             primary="Customer support" />
         </ListItem>
       </List>
-      {/* <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
     </nav>
   )
 };

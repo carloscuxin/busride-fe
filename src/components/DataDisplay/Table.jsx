@@ -1,12 +1,12 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 
-const Table = ({data}) => {
+const Table = (props) => {
 	return (
     <MaterialTable
-      title={data.title}
-      columns={data.columns}
-      data={data.information}
+      title={props.title}
+      columns={props.columns}
+      data={props.data}
       options={{ selection: true }}
       actions={[
         {
