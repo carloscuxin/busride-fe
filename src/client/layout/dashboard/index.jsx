@@ -33,15 +33,10 @@ const Dashboard = (props) => {
         variant="persistent"
         anchor="left"
         open={isOpenDrawer}
-        classes={{
-          paper: classes.drawerPaper,
-        }} >
+        classes={{ paper: classes.drawerPaper }} >
         <SideBar />
       </Drawer>
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: isOpenDrawer,
-        })} >
+      <main className={clsx(classes.content, { [classes.contentShift]: isOpenDrawer })} >
         <div className={classes.drawerHeader} />
         {props.children}
         <Footer />

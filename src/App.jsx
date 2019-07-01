@@ -5,8 +5,7 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
-          <Routes /> 
-        
+        <Routes />
       </Fragment>
     )
   }
