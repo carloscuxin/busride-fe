@@ -21,6 +21,9 @@ export default makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  menuLanguage: {
+    float: 'right'
+  },
   hide: {
     display: 'none',
   }

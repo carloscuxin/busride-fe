@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom';
 // Material components
 import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Typography } from '@material-ui/core';
 // Own components
+import Labels from '../../../../helpers/labels/Labels';
 import styles from './styles';
 
 
 const SideBar = () => {
   const classes = styles();
   const menuList = [
-    { label: 'Dashboard', title: 'Dashboard', url: '/', icon: 'dashboard' },
-    { label: 'Vehicles', title: 'Vehicles', url: '/vehicles', icon: 'directions_bus' },
-    { label: 'Companies', title: 'Companies', url: '/companies', icon: 'business' },
+    { label: Labels.sidebar.titlesMenu.dashboard, url: '/', icon: 'dashboard' },
+    { label: Labels.sidebar.titlesMenu.vehicles, url: '/vehicles', icon: 'directions_bus' },
+    { label: Labels.sidebar.titlesMenu.companies, url: '/companies', icon: 'business' },
   ];
 
   const isLinkActive = (linkUrl) => {
@@ -77,7 +78,7 @@ const SideBar = () => {
         disablePadding
         subheader={
           <ListSubheader className={classes.listSubheader}>
-            Support
+            {Labels.sidebar.titleSections.support}
           </ListSubheader>
         } >
         <ListItem
@@ -85,12 +86,10 @@ const SideBar = () => {
           component="a"
           href="https://devias.io/contact-us"
           target="_blank" >
-          <ListItemIcon className={classes.listItemIcon}>
-            <i className={'material-icons'}>info</i>
-          </ListItemIcon>
+          <ListItemIcon className={classes.listItemIcon}><i className={'material-icons'}>info</i></ListItemIcon>
           <ListItemText
             classes={{ primary: classes.listItemText }}
-            primary="Customer support" />
+            primary={Labels.sidebar.titlesMenu.customerSupport} />
         </ListItem>
       </List>
     </nav>

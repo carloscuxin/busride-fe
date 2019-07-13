@@ -25,7 +25,7 @@ const Dashboard = (props) => {
       <CssBaseline />
       <TopBar 
         handleDrawerOpen={() => handleDrawerOpen} 
-        handleDrawerClose={() => handleDrawerClose} 
+        handleDrawerClose={() => handleDrawerClose}
         isOpenDrawer={isOpenDrawer}
         title={props.title} />
       <Drawer
