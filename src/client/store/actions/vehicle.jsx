@@ -34,7 +34,7 @@ const fetchColumnsSuccess = columns => ({
  * [04/07/2019] / acuxin 
 **/
 export const fetchColumns = () => {
-  const url = 'http://localhost:9000/vehicles/columnsTable';
+  const url = 'https://busride.labodegadelfotografo.com/vehicles/columnsTable';
   fetchColumnsStart();
   return axios.get(url).then(res => fetchColumnsSuccess(res.data)).catch(error => fetchColumnsFail(error.response));
 };
@@ -73,7 +73,7 @@ const fetchVehiclesSuccess = vehicles => ({
  * [04/07/2019] / acuxin 
 **/
 export const fetchVehicles = () => {
-  const url = 'http://localhost:9000/vehicles';
+  const url = 'https://busride.labodegadelfotografo.com/vehicles';
   fetchVehiclesStart();
   return axios.get(url).then(res => fetchVehiclesSuccess(res.data)).catch(error => fetchVehiclesFail(error.response));
 };

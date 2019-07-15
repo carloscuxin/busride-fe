@@ -34,7 +34,7 @@ const fetchColumnsSuccess = columns => ({
  * [05/07/2019] / acuxin 
 **/
 export const fetchColumns = () => {
-  const url = 'http://localhost:9000/companies/columnsTable';
+  const url = 'https://busride.labodegadelfotografo.com/companies/columnsTable';
   fetchColumnsStart();
   return axios.get(url).then(res => fetchColumnsSuccess(res.data)).catch(error => fetchColumnsFail(error.response));
 };
@@ -73,7 +73,7 @@ const fetchCompaniesSuccess = companies => ({
  * [05/07/2019] / acuxin 
 **/
 export const fetchCompanies = () => {
-  const url = 'http://localhost:9000/companies';
+  const url = 'https://busride.labodegadelfotografo.com/companies';
   fetchCompaniesStart();
   return axios.get(url).then(res => fetchCompaniesSuccess(res.data)).catch(error => fetchCompaniesFail(error.response));
 };
@@ -112,7 +112,7 @@ const setCompanySuccess = company => ({
  * [11/07/2019] / acuxin 
 **/
 export const insertCompany = data => {
-  const url = 'http://localhost:9000/companies';
+  const url = 'https://busride.labodegadelfotografo.com/companies';
   setCompanyStart();
   return axios.post(url, data).then(res => setCompanySuccess(res.data)).catch(error => setCompanyFail(error.response));
 };
