@@ -1,5 +1,10 @@
-import * as actionTypes from './actionTypes';
 import axios from 'axios';
+//Own components
+import * as routes from '../../../server/routes';
+import * as actionTypes from './actionTypes';
+
+const apisUrl = routes.companies;
+
 
 // ========================================================================================== //
 // ACCIONES PARA OBTENER LAS COLUMNAS DE LA TABLA COMPAÑIAS
@@ -34,7 +39,7 @@ const fetchColumnsSuccess = columns => ({
  * [05/07/2019] / acuxin 
 **/
 export const fetchColumns = () => {
-  const url = 'https://busride.labodegadelfotografo.com/companies/columnsTable';
+  const url = apisUrl.getColumns.api;
   fetchColumnsStart();
   return axios.get(url).then(res => fetchColumnsSuccess(res.data)).catch(error => fetchColumnsFail(error.response));
 };
@@ -73,7 +78,7 @@ const fetchCompaniesSuccess = companies => ({
  * [05/07/2019] / acuxin 
 **/
 export const fetchCompanies = () => {
-  const url = 'https://busride.labodegadelfotografo.com/companies';
+  const url = apisUrl.getAll.api;
   fetchCompaniesStart();
   return axios.get(url).then(res => fetchCompaniesSuccess(res.data)).catch(error => fetchCompaniesFail(error.response));
 };
@@ -112,7 +117,7 @@ const setCompanySuccess = company => ({
  * [11/07/2019] / acuxin 
 **/
 export const insertCompany = data => {
-  const url = 'https://busride.labodegadelfotografo.com/companies';
+  const url = apisUrl.insert.api
   setCompanyStart();
   return axios.post(url, data).then(res => setCompanySuccess(res.data)).catch(error => setCompanyFail(error.response));
 };

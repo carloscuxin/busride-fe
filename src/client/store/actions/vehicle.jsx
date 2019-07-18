@@ -1,5 +1,9 @@
-import * as actionTypes from './actionTypes';
 import axios from 'axios';
+//Own components
+import * as routes from '../../../server/routes';
+import * as actionTypes from './actionTypes';
+
+const apisUrl = routes.vehicles;
 
 // ========================================================================================== //
 // ACCIONES PARA OBTENER LAS COLUMNAS DE LA TABLA VEHICULOS
@@ -34,7 +38,7 @@ const fetchColumnsSuccess = columns => ({
  * [04/07/2019] / acuxin 
 **/
 export const fetchColumns = () => {
-  const url = 'https://busride.labodegadelfotografo.com/vehicles/columnsTable';
+  const url = apisUrl.getColumns.api;
   fetchColumnsStart();
   return axios.get(url).then(res => fetchColumnsSuccess(res.data)).catch(error => fetchColumnsFail(error.response));
 };
@@ -73,7 +77,7 @@ const fetchVehiclesSuccess = vehicles => ({
  * [04/07/2019] / acuxin 
 **/
 export const fetchVehicles = () => {
-  const url = 'https://busride.labodegadelfotografo.com/vehicles';
+  const url = apisUrl.getAll.api;
   fetchVehiclesStart();
   return axios.get(url).then(res => fetchVehiclesSuccess(res.data)).catch(error => fetchVehiclesFail(error.response));
 };

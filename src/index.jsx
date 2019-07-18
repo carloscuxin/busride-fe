@@ -4,7 +4,6 @@ import App from './App';
 // Own components
 import StoreProvider from './client/store/Store';
 
-//const store = configureStore();
 const app = (
   <StoreProvider>
     <App />
