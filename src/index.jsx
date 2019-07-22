@@ -18,11 +18,11 @@ const onRedirectCallback = appState => {
 };
 
 const app = (
-  <Auth0Provider>
-    {/* domain={config.DOMAIN}
-    client_id={config.CLIENT_ID} > */}
-    {/* //redirect_uri={window.location.origin}
-    //onRedirectCallback={onRedirectCallback} > */}
+  <Auth0Provider
+    domain={config.DOMAIN}
+    client_id={config.CLIENT_ID}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={onRedirectCallback} >
     <StoreProvider>
       <App />
     </StoreProvider>

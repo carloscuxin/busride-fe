@@ -11,7 +11,6 @@ import { Spinner } from '../../components/feedback';
 
 const status = { loadInfo: true, isThereData: false };
 const Index = () => {
-  //const { loading, user } = useAuth0();
   const [state, dispatch] = useContext(Contex);
   const stateVehicle = state.vehicle;
   //console.log(loading,document.title);

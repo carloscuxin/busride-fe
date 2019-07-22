@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,12 +13,26 @@ import Typography from '@material-ui/core/Typography';
 import * as Input from '../../components/inputs';
 import Labels from '../../helpers/labels/Labels';
 import styles from './styles';
+//import { useAuth0 } from "../../../auth0-wrapper";
+import { authentication } from '../../../server/services/authentication';
 
-export default function SignInSide() {
-  const classes = styles();
+const Login = () => {
   
+  const login = async e => {
+    e.preventDefault();
+    const request = {
+      user: document.getElementById("user").value,
+      password: document.getElementById("password").value,
+    };
+    
+    const res = await authentication.login(request);
+    console.log(res);
+  };
+
+  const classes = styles();
+
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid container component="main" className={classes.root} >
       <CssBaseline />
       {/* Imagen left side */}
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -28,7 +42,7 @@ export default function SignInSide() {
         <div className={classes.paper}>
           <Avatar className={classes.avatar}><LockOutlinedIcon /></Avatar>
           <Typography component="h1" variant="h5">{Labels.general.titlesViews.login}</Typography>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={ (e) => login(e) }>
             <Input.TextField
               variant="outlined"
               margin="normal"
@@ -79,4 +93,6 @@ export default function SignInSide() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default Login;

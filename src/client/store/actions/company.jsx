@@ -11,7 +11,7 @@ const apisUrl = routes.companies;
 // ========================================================================================== //
 
 /**
- * Acción que se ejcuta primero para obtener las columnas de la tabla
+ * Acción que se ejecuta primero para obtener las columnas de la tabla
  * [05/07/2019] / acuxin 
 **/
 const fetchColumnsStart = () => ({ type: actionTypes.FETCH_COLUMNS_COMPANIES_START });
@@ -38,10 +38,14 @@ const fetchColumnsSuccess = columns => ({
  * Acción que inicia la petición de las columnas de la tabla
  * [05/07/2019] / acuxin 
 **/
-export const fetchColumns = () => {
+export const fetchColumns = async () => {
   const url = apisUrl.getColumns.api;
   fetchColumnsStart();
-  return axios.get(url).then(res => fetchColumnsSuccess(res.data)).catch(error => fetchColumnsFail(error.response));
+  try {
+    const res = await axios.get(url);
+    return fetchColumnsSuccess(res.data);
+  }
+  catch(error) { return fetchColumnsFail(error.response); }
 };
 
 
@@ -50,7 +54,7 @@ export const fetchColumns = () => {
 // ========================================================================================== //
 
 /**
- * Acción que se ejcuta primero para obtener la lista de las compañias
+ * Acción que se ejecuta primero para obtener la lista de las compañias
  * [05/07/2019] / acuxin 
 **/
 const fetchCompaniesStart = () => ({ type: actionTypes.FETCH_COMPANIES_START });
@@ -77,10 +81,14 @@ const fetchCompaniesSuccess = companies => ({
  * Acción que inicia la petición de las compañias
  * [05/07/2019] / acuxin 
 **/
-export const fetchCompanies = () => {
+export const fetchCompanies = async () => {
   const url = apisUrl.getAll.api;
   fetchCompaniesStart();
-  return axios.get(url).then(res => fetchCompaniesSuccess(res.data)).catch(error => fetchCompaniesFail(error.response));
+  try {
+    const res = await axios.get(url);
+    return fetchCompaniesSuccess(res.data);
+  }
+  catch(error) { return fetchCompaniesFail(error.response); }
 };
 
 
@@ -89,7 +97,7 @@ export const fetchCompanies = () => {
 // ========================================================================================== //
 
 /**
- * Acción que se ejcuta primero para insertar una compañia
+ * Acción que se ejecuta primero para insertar una compañia
  * [11/07/2019] / acuxin 
 **/
 const setCompanyStart = () => ({ type: actionTypes.SET_COMPANY_START });
@@ -116,10 +124,14 @@ const setCompanySuccess = company => ({
  * Acción que inicia la insercción de la compañia
  * [11/07/2019] / acuxin 
 **/
-export const insertCompany = data => {
+export const insertCompany = async data => {
   const url = apisUrl.insert.api
   setCompanyStart();
-  return axios.post(url, data).then(res => setCompanySuccess(res.data)).catch(error => setCompanyFail(error.response));
+  try {
+    const res = await axios.post(url, data);
+    return setCompanySuccess(res.data);
+  }
+  catch(error) { return setCompanyFail(error.response); }
 };
 
 
