@@ -54,4 +54,9 @@ export default {
   'label.forms.companies.email': 'E-Mail',
   'label.forms.companies.webPage': 'Website',
   'label.forms.companies.add': 'Firma hinzufügen',
+  //-- Login --//
+  'label.title.login': 'Einloggen',
+  'label.forms.login.user': 'Nutzer*',
+  'label.forms.login.password': 'Passwort*',
+  'label.forms.login.rememberme': 'Erinnere dich an mich',
 };

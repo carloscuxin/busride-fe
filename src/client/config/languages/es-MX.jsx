@@ -54,4 +54,9 @@ export default {
   'label.forms.companies.email': 'Correo',
   'label.forms.companies.webPage': 'Página Web',
   'label.forms.companies.add': 'Agregar Compañia',
+  //-- Login --//
+  'label.title.login': 'Iniciar sesión',
+  'label.forms.login.user': 'Usuario*',
+  'label.forms.login.password': 'Contraseña*',
+  'label.forms.login.rememberme': 'Recuérdame',
 };

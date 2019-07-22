@@ -16,7 +16,7 @@ const InputTextField = (props) => {
   return (
     <TextField
       className={classes.root}
-      onChange={(e) => props.onChange(e)}
+      onChange={(props.onChange !== undefined) ? (e) => props.onChange(e) : null }
       type={props.type}
       label={props.label}
       name={props.name}
@@ -24,6 +24,7 @@ const InputTextField = (props) => {
       margin={props.margin}
       id={props.id}
       fullWidth={props.fullWidth}
+      autoFocus={props.autoFocus}
     />
   );
 }

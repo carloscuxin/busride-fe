@@ -5,6 +5,7 @@ const Labels = {
   //-- General --//
   general: {
     titlesViews: {
+      login: <FormattedMessage id="label.title.login" defaultMessage="Iniciar sesión" />,
       dashboard: <FormattedMessage id="label.title.dashboard" defaultMessage="Panel" />,
       vehicles: <FormattedMessage id="label.title.vehicles" defaultMessage="Vehiculos" />,
       companies: <FormattedMessage id="label.title.companies" defaultMessage="Compañias" />
@@ -70,6 +71,15 @@ const Labels = {
         email: <FormattedMessage id="label.forms.companies.email" defaultMessage="Correo" />,
         webPage: <FormattedMessage id="label.forms.companies.webPage" defaultMessage="Página Web" />,
         addCompany: <FormattedMessage id="label.forms.companies.add" defaultMessage="Agregar Compañia" />,
+      },
+    },
+  },
+  login: {
+    forms: {
+      labels: {
+        user: <FormattedMessage id="label.forms.login.user" defaultMessage="Usuario*" />,
+        password: <FormattedMessage id="label.forms.login.password" defaultMessage="Contraseña*" />,
+        rememberme: <FormattedMessage id="label.forms.login.rememberme" defaultMessage="Recuérdame" />,
       },
     },
   },

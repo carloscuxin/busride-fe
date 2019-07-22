@@ -7,12 +7,14 @@ import * as actionTypes from '../../store/actions/actionTypes';
 import * as actions from '../../store/actions';
 import Table from '../../components/datadisplay/Table';
 import { Spinner } from '../../components/feedback';
+//import { useAuth0 } from "../../../auth0-wrapper";
 
 const status = { loadInfo: true, isThereData: false };
 const Index = () => {
+  //const { loading, user } = useAuth0();
   const [state, dispatch] = useContext(Contex);
   const stateVehicle = state.vehicle;
-  
+  //console.log(loading,document.title);
   /**
    * Ejecuta las funciones correpondientes para cargar
    * la información de la vista

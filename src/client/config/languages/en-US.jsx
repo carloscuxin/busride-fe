@@ -54,4 +54,9 @@ export default {
   'label.forms.companies.email': 'Email',
   'label.forms.companies.webPage': 'Web Page',
   'label.forms.companies.add': 'Add Company',
+  //-- Login --//
+  'label.title.login': 'Log in',
+  'label.forms.login.user': 'User*',
+  'label.forms.login.password': 'Password*',
+  'label.forms.login.rememberme': 'Remember me',
 };
