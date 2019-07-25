@@ -2,14 +2,13 @@ import React from 'react';
 import { FormattedMessage } from "react-intl";
 import * as typesValidate from './typesValidate';
 import * as models from '../../../server/models';
-import Labels from '../labels/Labels';
+import { Messages } from '../messages';
 
 const messagesErrors = {
-  required: Labels.general.validations.errors.required,
-  onlyNumbers: Labels.general.validations.errors.onlyNumbers,
-  notNull: Labels.general.validations.errors.notNull,
-  //length: Labels.general.validations.errors.length,
-  email: Labels.general.validations.errors.email
+  required: Messages.general.validations.required,
+  onlyNumbers: Messages.general.validations.onlyNumbers,
+  notNull: Messages.general.validations.notNull,
+  email: Messages.general.validations.email
 }
 
 /**
@@ -106,7 +105,7 @@ const validateNullable = (data, key) => {
  * Funcion que valida la longitud
 **/
 const validateLength = (minLength, maxLength, data, key) => {
-   const messageLength = <FormattedMessage id="label.error.length" defaultMessage="El campo debe tener una longitud entre {minLength} y {maxLength}" values={{ minLength, maxLength }} />
+   const messageLength = <FormattedMessage id="validation.length" defaultMessage="El campo debe tener una longitud entre {minLength} y {maxLength}" values={{ minLength, maxLength }} />
   if (data.length < minLength || data.length > maxLength) 
     return {input: key, visibility: true, args: 'length', message: messageLength };
   return;

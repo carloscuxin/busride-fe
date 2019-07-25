@@ -1,7 +1,11 @@
 export default {
+// ========================================================================================== //
+// LABELS
+// ========================================================================================== //
+
   /**
-   * GENERAL LABELS
-   * [09/072019] / acuxin
+   * GENERAL
+   * [09/07/2019] / acuxin
   **/
   //-- Topbar --//
   'tooltip.language.dashboard': 'Idioma',
@@ -21,12 +25,6 @@ export default {
   'label.buttons.save': 'Guardar',
   'label.buttons.cancel': 'Cancelar',
   'label.buttons.edit': 'Editar',
-  //-- Errors --//
-  'label.error.required': 'El campo es requerido',
-  'label.error.onlyNumbers': 'El campo solo puede contener números',
-  'label.error.notNull': 'El campo no puede ser nulo',
-  'label.error.length': 'El campo debe tener una longitud entre {minLength} y {maxLength}',
-  'label.error.email': 'El correo no es válido',
   //-- Table --//
   'label.table.noResults': 'No hay registros para mostrar',
   'label.table.searchTooltip': 'Buscar',
@@ -39,8 +37,8 @@ export default {
   'tooltip.table.add': 'Añadir Elemento',
 
   /**
-   * VIEWS LABELS
-   * [09/072019] / acuxin
+   * VIEWS
+   * [09/07/2019] / acuxin
   **/
   //-- Dashboard --//
   'label.title.dashboard': 'Panel',
@@ -58,5 +56,28 @@ export default {
   'label.title.login': 'Iniciar sesión',
   'label.forms.login.user': 'Usuario*',
   'label.forms.login.password': 'Contraseña*',
-  'label.forms.login.rememberme': 'Recuérdame',
+  'label.forms.login.showPassword': 'Mostrar contraseña',
+
+
+// ========================================================================================== //
+// MESSAGES
+// ========================================================================================== //
+
+  /**
+   * GENERAL
+   * [24/07/2019] / acuxin
+  **/
+  //-- Validations --//
+  'validation.required': 'El campo es requerido',
+  'validation.onlyNumbers': 'El campo solo puede contener números',
+  'validation.notNull': 'El campo no puede ser nulo',
+  'validation.length': 'El campo debe tener una longitud entre {minLength} y {maxLength}',
+  'validation.email': 'El correo no es válido',
+
+  /**
+   * VIEWS
+   * [24/07/2019] / acuxin
+  **/
+  //Login
+  'error.login.badRequest': 'Usuario o contraseña incorrectos',
 };

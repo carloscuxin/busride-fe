@@ -1,7 +1,11 @@
 export default {
+// ========================================================================================== //
+// LABELS
+// ========================================================================================== //
+
   /**
-   * GENERAL LABELS
-   * [09/072019] / acuxin
+   * GENERAL
+   * [09/07/2019] / acuxin
   **/
   //-- Topbar --//
   'tooltip.language.dashboard': 'Language',
@@ -21,12 +25,6 @@ export default {
   'label.buttons.save': 'Save',
   'label.buttons.cancel': 'Cancel',
   'label.buttons.edit': 'Edit',
-  //-- Errors --//
-  'label.error.required': 'The field is required',
-  'label.error.onlyNumbers': 'The field can only contain numbers',
-  'label.error.notNull': 'The field cannot be null',
-  'label.error.length': 'The field must have a length between {minLength} and {maxLength}',
-  'label.error.email': 'The email is not valid',
   //-- Table --//
   'label.table.noResults': 'No records to display',
   'label.table.searchTooltip': 'Search',
@@ -39,8 +37,8 @@ export default {
   'tooltip.table.add': 'Add Item',
 
   /**
-   * VIEWS LABELS
-   * [09/072019] / acuxin
+   * VIEWS
+   * [09/07/2019] / acuxin
   **/
   //-- Dashboard --//
   'label.title.dashboard': 'Dashboard',
@@ -58,5 +56,28 @@ export default {
   'label.title.login': 'Log in',
   'label.forms.login.user': 'User*',
   'label.forms.login.password': 'Password*',
-  'label.forms.login.rememberme': 'Remember me',
+  'label.forms.login.showPassword': 'Show password',
+
+
+// ========================================================================================== //
+// MESSAGES
+// ========================================================================================== //
+
+  /**
+   * GENERAL
+   * [24/07/2019] / acuxin
+  **/
+  //-- Errors --//
+  'validation.required': 'The field is required',
+  'validation.onlyNumbers': 'The field can only contain numbers',
+  'validation.notNull': 'The field cannot be null',
+  'validation.length': 'The field must have a length between {minLength} and {maxLength}',
+  'validation.email': 'The email is not valid',
+
+  /**
+   * VIEWS
+   * [24/07/2019] / acuxin
+  **/
+  //Login
+  'error.login.badRequest': 'User or password incorrect',
 };

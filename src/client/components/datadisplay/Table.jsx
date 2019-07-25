@@ -2,7 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import { injectIntl } from 'react-intl';
 //Own components
-import Labels from '../../helpers/labels/Labels';
+import { Labels } from '../../helpers/messages';
 
 const Table = (props) => {
   const labels = {

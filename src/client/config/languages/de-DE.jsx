@@ -1,7 +1,11 @@
 export default {
+// ========================================================================================== //
+// LABELS
+// ========================================================================================== //
+
   /**
-   * GENERAL LABELS
-   * [09/072019] / acuxin
+   * GENERAL
+   * [09/07/2019] / acuxin
   **/
   //-- Topbar --//
   'tooltip.language.dashboard': 'Sprache',
@@ -19,14 +23,8 @@ export default {
   //-- Buttons --//
   'label.buttons.agree': 'Zustimmen',
   'label.buttons.save': 'Speichern',
-  'label.buttons.cancel': 'Stornieren',
+  'label.buttons.cancel': 'Abbrechen',
   'label.buttons.edit': 'Redigieren',
-  //-- Errors --//
-  'label.error.required': 'Das Feld ist erforderlich',
-  'label.error.onlyNumbers': 'Das Feld kann nur Zahlen enthalten',
-  'label.error.notNull': 'Das Feld darf nicht null sein',
-  'label.error.length': 'Das Feld muss eine Länge zwischen {minLength} und {maxLength} haben',
-  'label.error.email': 'Die E-Mail ist ungültig',
   //-- Table --//
   'label.table.noResults': 'Es gibt keine Aufzeichnungen zu zeigen',
   'label.table.searchTooltip': 'Suchen',
@@ -39,8 +37,8 @@ export default {
   'tooltip.table.add': 'Artikel hinzufügen',
 
   /**
-   * VIEWS LABELS
-   * [09/072019] / acuxin
+   * VIEWS
+   * [09/07/2019] / acuxin
   **/
   //-- Dashboard --//
   'label.title.dashboard': 'Armaturenbrett',
@@ -58,5 +56,27 @@ export default {
   'label.title.login': 'Einloggen',
   'label.forms.login.user': 'Nutzer*',
   'label.forms.login.password': 'Passwort*',
-  'label.forms.login.rememberme': 'Erinnere dich an mich',
+  'label.forms.login.showPassword': 'Passwort anzeigen',
+
+// ========================================================================================== //
+// MESSAGES
+// ========================================================================================== //
+
+  /**
+   * GENERAL
+   * [24/07/2019] / acuxin
+  **/
+  //-- Validations --//
+  'validation.required': 'Das Feld ist erforderlich',
+  'validation.onlyNumbers': 'Das Feld kann nur Zahlen enthalten',
+  'validation.notNull': 'Das Feld darf nicht null sein',
+  'validation.length': 'Das Feld muss eine Länge zwischen {minLength} und {maxLength} haben',
+  'validation.email': 'Die E-Mail ist ungültig',
+
+  /**
+   * VIEWS
+   * [24/07/2019] / acuxin
+  **/
+  //Login
+  'error.login.badRequest': 'Falscher Benutzername oder Passwort',
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 //Own components
-import Labels from '../../helpers/labels/Labels';
+import { Labels } from '../../helpers/messages';
 import * as Input from '../../components/inputs';
 import styles from './styles';
 

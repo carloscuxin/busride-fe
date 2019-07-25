@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // Material components
 import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Typography } from '@material-ui/core';
 // Own components
-import Labels from '../../../../helpers/labels/Labels';
+import { Labels } from '../../../../helpers/messages';
 import styles from './styles';
 
 

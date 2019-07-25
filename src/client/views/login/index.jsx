@@ -11,26 +11,39 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 //Own components
 import * as Input from '../../components/inputs';
-import Labels from '../../helpers/labels/Labels';
+import { Labels } from '../../helpers/messages';
 import styles from './styles';
-//import { useAuth0 } from "../../../auth0-wrapper";
-import { authentication } from '../../../server/services/authentication';
+import { useAuth } from '../../../server/services/authentication';
 
 const Login = () => {
-  
-  const login = async e => {
+  const { login } = useAuth();
+  const [typePassword, setTypePassword] = useState("password");
+  const [error, setError] = useState(); 
+
+  /**
+   * Función para loguearse
+   * [24/07/2019] / acuxin
+  **/
+  const initLogin = async e => {
     e.preventDefault();
     const request = {
       user: document.getElementById("user").value,
       password: document.getElementById("password").value,
     };
-    
-    const res = await authentication.login(request);
-    console.log(res);
+    setError(await login(request));
+  };
+
+  /**
+   * Función que muestra la contraseña
+   * [24/07/2019] / acuxin
+  **/
+  const showPassword = () => {
+    const inputPassword = document.getElementById("password");
+    setTypePassword((inputPassword.type === "password") ? "text" : "password");
   };
 
   const classes = styles();
-
+  
   return (
     <Grid container component="main" className={classes.root} >
       <CssBaseline />
@@ -42,14 +55,14 @@ const Login = () => {
         <div className={classes.paper}>
           <Avatar className={classes.avatar}><LockOutlinedIcon /></Avatar>
           <Typography component="h1" variant="h5">{Labels.general.titlesViews.login}</Typography>
-          <form className={classes.form} onSubmit={ (e) => login(e) }>
+          <form className={classes.form} onSubmit={(e) => initLogin(e)}>
             <Input.TextField
               variant="outlined"
               margin="normal"
               fullWidth={true}
               id="user"
               name="user"
-              label={Labels.login.forms.labels.user}
+              label={Labels.login.forms.user}
               autoFocus={true}
               type="text"
             />
@@ -60,12 +73,12 @@ const Login = () => {
               fullWidth={true}
               id="password"
               name="password"
-              label={Labels.login.forms.labels.password}
-              type="password"
+              label={Labels.login.forms.password}
+              type={typePassword}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label={Labels.login.forms.labels.rememberme}
+              control={<Checkbox value="remember" color="primary" onClick={showPassword} />}
+              label={Labels.login.forms.showPassword}
             />
             <Button
               type="submit"
@@ -91,6 +104,7 @@ const Login = () => {
           </form>
         </div>
       </Grid>
+      {error}
     </Grid>
   );
 };

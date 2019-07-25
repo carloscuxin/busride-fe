@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 // Own components
-import { Auth0Provider } from "./auth0-wrapper";
+import { AuthProvider } from "./server/services/authentication";
 import StoreProvider from './client/store/Store';
 import config from './config';
 
@@ -18,7 +18,7 @@ const onRedirectCallback = appState => {
 };
 
 const app = (
-  <Auth0Provider
+  <AuthProvider
     domain={config.DOMAIN}
     client_id={config.CLIENT_ID}
     redirect_uri={window.location.origin}
@@ -26,7 +26,7 @@ const app = (
     <StoreProvider>
       <App />
     </StoreProvider>
-  </Auth0Provider>
+  </AuthProvider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from "react-intl";
 
-const Labels = {
+export const Labels = {
   //-- General --//
   general: {
     titlesViews: {
@@ -20,15 +20,6 @@ const Labels = {
       save: <FormattedMessage id="label.buttons.save" defaultMessage="Guardar" />,
       cancel: <FormattedMessage id="label.buttons.cancel" defaultMessage="Cancelar" />,
       edit: <FormattedMessage id="label.buttons.edit" defaultMessage="Editar" />,
-    },
-    validations: {
-      errors: {
-        required: <FormattedMessage id="label.error.required" defaultMessage="El campo es requerido" />,
-        onlyNumbers: <FormattedMessage id="label.error.onlyNumbers" defaultMessage="El campo solo puede contener números" />,
-        notNull: <FormattedMessage id="label.error.notNull" defaultMessage="El campo no puede ser nulo" />,
-        length: <FormattedMessage id="label.error.length" defaultMessage="El campo debe tener una longitud entre {minLength} y {maxLength}" values={{}} />,
-        email: <FormattedMessage id="label.error.email" defaultMessage="El correo no es válido" />,
-      },
     },
     table: {
       noResults: <FormattedMessage id="label.table.noResults" defaultMessage="No hay registros para mostrar" />,
@@ -76,13 +67,9 @@ const Labels = {
   },
   login: {
     forms: {
-      labels: {
-        user: <FormattedMessage id="label.forms.login.user" defaultMessage="Usuario*" />,
-        password: <FormattedMessage id="label.forms.login.password" defaultMessage="Contraseña*" />,
-        rememberme: <FormattedMessage id="label.forms.login.rememberme" defaultMessage="Recuérdame" />,
-      },
+      user: <FormattedMessage id="label.forms.login.user" defaultMessage="Usuario*" />,
+      password: <FormattedMessage id="label.forms.login.password" defaultMessage="Contraseña*" />,
+      showPassword: <FormattedMessage id="label.forms.login.showPassword" defaultMessage="Mostrar contraseña" />,
     },
   },
 };
-
-export default Labels;

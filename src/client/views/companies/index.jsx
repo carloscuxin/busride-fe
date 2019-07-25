@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 // Own components
 import { Dashboard as DashboardLayout } from '../../layout/index';
-import Labels from '../../helpers/labels/Labels';
+import { Labels } from '../../helpers/messages';
 import Contex from '../../store/Context';
 import ResponsiveDialog from '../../components/feedback/ResponsiveDialog';
 import * as actionTypes from '../../store/actions/actionTypes';

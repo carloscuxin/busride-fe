@@ -1,6 +1,6 @@
 import React from 'react';
 // Own components
-import Labels from '../../helpers/labels/Labels';
+import { Labels } from '../../helpers/messages';
 //import Table from '../../DataDisplay/Table';
 
 import { Dashboard as DashboardLayout } from '../../layout/index';

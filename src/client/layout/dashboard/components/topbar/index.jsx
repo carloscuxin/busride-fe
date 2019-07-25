@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 //Own components
-import Labels from '../../../../helpers/labels/Labels';
+import { Labels } from '../../../../helpers/messages';
 import Context from '../../../../store/Context';
 import styles from './styles';
 import MenuButton from '../../../../components/navigation/ButtonMenu';
