@@ -8,7 +8,7 @@ import { Dashboard as DashboardLayout } from '../../layout/index';
 
 const Index = () => {
   const { user } = useAuth();
-  console.log(user);
+  console.log('u',user);
   return (
     <DashboardLayout title={Labels.general.titlesViews.dashboard}>
 

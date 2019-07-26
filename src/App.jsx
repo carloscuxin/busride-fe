@@ -8,7 +8,7 @@ import Routes from './client/config/Router';
 import Contex from './client/store/Context';
 import * as Messages from './client/config/languages';
 import * as actions from './client/store/actions';
-
+import { AuthProvider } from "./server/services/authentication";
 
 addLocaleData(de);
 addLocaleData(en);
@@ -30,9 +30,11 @@ const App = () => {
   }
   
   return (
-    <IntlProvider locale={lang} messages={messages[lang]}>
-      <Routes />
-    </IntlProvider>
+    <AuthProvider>
+      <IntlProvider locale={lang} messages={messages[lang]}>
+        <Routes />
+      </IntlProvider>
+    </AuthProvider>
   )
 };
 

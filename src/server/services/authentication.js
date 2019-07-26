@@ -11,8 +11,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({children, intl}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState();
-  
-
+  console.log('object')
   useEffect(() => {
     const initAuth = async () => {
       const url = apisUrl.isAuthenticated.api;
@@ -27,7 +26,7 @@ export const AuthProvider = ({children, intl}) => {
       }
 
     }
-
+    console.log('useef')
     initAuth();
   }, []);
   
