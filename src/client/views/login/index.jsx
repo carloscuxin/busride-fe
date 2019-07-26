@@ -16,22 +16,13 @@ import styles from './styles';
 import { useAuth } from '../../../server/services/authentication';
 
 const Login = () => {
-  const { login } = useAuth();
+  const classes = styles();
+  const { initLogin, isAuthenticated } = useAuth();
   const [typePassword, setTypePassword] = useState("password");
-  const [error, setError] = useState(); 
-
-  /**
-   * Función para loguearse
-   * [24/07/2019] / acuxin
-  **/
-  const initLogin = async e => {
-    e.preventDefault();
-    const request = {
-      user: document.getElementById("user").value,
-      password: document.getElementById("password").value,
-    };
-    setError(await login(request));
-  };
+  const [message, setMessage] = useState();
+  //console.log(isAuthenticated);
+  //Cierra el Snackbar
+  const closeSnackBar = () => setMessage();
 
   /**
    * Función que muestra la contraseña
@@ -42,8 +33,21 @@ const Login = () => {
     setTypePassword((inputPassword.type === "password") ? "text" : "password");
   };
 
-  const classes = styles();
-  
+  /**
+   * Función para iniciar a loguearse
+   * [24/07/2019] / acuxin
+  **/
+  const init = async e => {
+    e.preventDefault();
+    const request = {
+      user: document.getElementById("user").value,
+      password: document.getElementById("password").value,
+    };
+
+    const message = await initLogin(request, closeSnackBar);
+    setMessage(message);
+  };
+
   return (
     <Grid container component="main" className={classes.root} >
       <CssBaseline />
@@ -55,7 +59,7 @@ const Login = () => {
         <div className={classes.paper}>
           <Avatar className={classes.avatar}><LockOutlinedIcon /></Avatar>
           <Typography component="h1" variant="h5">{Labels.general.titlesViews.login}</Typography>
-          <form className={classes.form} onSubmit={(e) => initLogin(e)}>
+          <form className={classes.form} onSubmit={(e) => init(e)}>
             <Input.TextField
               variant="outlined"
               margin="normal"
@@ -104,7 +108,7 @@ const Login = () => {
           </form>
         </div>
       </Grid>
-      {error}
+      {message}
     </Grid>
   );
 };

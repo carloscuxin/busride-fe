@@ -73,6 +73,8 @@ export default {
   'validation.notNull': 'The field cannot be null',
   'validation.length': 'The field must have a length between {minLength} and {maxLength}',
   'validation.email': 'The email is not valid',
+  //-- Errors --//
+  'error.general.internalServer': 'Could not connect to server. Please try again later.',
 
   /**
    * VIEWS

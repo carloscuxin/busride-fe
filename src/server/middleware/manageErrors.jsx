@@ -1,39 +1,40 @@
 import React from 'react';
-import { Messages } from '../../client/helpers/messages';
 import { Snackbar } from '@material-ui/core';
 //Own components
+import { Messages } from '../../client/helpers/messages';
 import { MySnackBar } from '../../client/components/feedback';
 
-export const DispatchMessage = ({isOpen}) => {
-  const [open, setOpen] = React.useState();
-  
-  const openSnackBar = () => {
-    isOpen = false;
-    setOpen(true);
-  };
-  
-  const closeSnackBar = () => {
-    console.log('ENtra')
-    setOpen(false);
-  };
-  
-  
-  
+export const dispatchMessage = (message, type, closeSnackBar) => {
   return (
     <Snackbar
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'right',
       }}
-      open={open}
-      autoHideDuration={6000}
-      
+      open={true}
     >
       <MySnackBar
         onClose={closeSnackBar}
-        variant="success"
-        message="This is an error message!"
+        variant={type}
+        message={message}
       />
     </Snackbar>
-  )
+  );
+};
+
+export const dispatchError = error => {
+  const err = error.response;
+  const type = "error";
+
+  if (err !== undefined) {
+    return {
+      message: Messages.login.errors[err.data.type],
+      type
+    }
+  }else {
+    return {
+      message: Messages.general.errors.internalServer,
+      type
+    }
+  }
 };

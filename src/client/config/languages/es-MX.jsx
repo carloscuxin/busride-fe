@@ -73,6 +73,8 @@ export default {
   'validation.notNull': 'El campo no puede ser nulo',
   'validation.length': 'El campo debe tener una longitud entre {minLength} y {maxLength}',
   'validation.email': 'El correo no es válido',
+  //-- Errors --//
+  'error.general.internalServer': 'No se pudo conectar al servidor. Por favor, intente de nuevo más tarde.',
 
   /**
    * VIEWS

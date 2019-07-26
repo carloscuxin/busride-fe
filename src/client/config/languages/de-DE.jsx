@@ -72,6 +72,8 @@ export default {
   'validation.notNull': 'Das Feld darf nicht null sein',
   'validation.length': 'Das Feld muss eine Länge zwischen {minLength} und {maxLength} haben',
   'validation.email': 'Die E-Mail ist ungültig',
+  //-- Errors --//
+  'error.general.internalServer': 'Verbindung zum Server konnte nicht hergestellt werden. Bitte versuchen Sie es später noch einmal.',
 
   /**
    * VIEWS

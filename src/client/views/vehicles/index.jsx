@@ -13,7 +13,7 @@ const status = { loadInfo: true, isThereData: false };
 const Index = () => {
   const [state, dispatch] = useContext(Contex);
   const stateVehicle = state.vehicle;
-  //console.log(loading,document.title);
+  
   /**
    * Ejecuta las funciones correpondientes para cargar
    * la información de la vista

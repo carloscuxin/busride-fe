@@ -1,33 +1,57 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { DispatchMessage } from '../middleware/manageErrors';
+//Own components
+import { Messages } from '../../client/helpers/messages';
+import { dispatchMessage, dispatchError } from '../middleware/manageErrors';
 import * as routes from '../routes';
 const apisUrl = routes.login;
 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
-export const AuthProvider = ({children}) => {
-  const [isAuthenticated, setIsAuthenticated] = useState();
+export const AuthProvider = ({children, intl}) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState();
+  
 
+  useEffect(() => {
+    const initAuth = async () => {
+      const url = apisUrl.isAuthenticated.api;
+      const user = localStorage.user;
+
+      const res = await axios.get(url, {headers: {user}});
+      const isAuthenticated = res.data;
+      setIsAuthenticated(isAuthenticated);
+      
+      if (isAuthenticated) {
+        setUser(JSON.parse(user));
+      }
+
+    }
+
+    initAuth();
+  }, []);
+  
   /**
    * Función para logear al usuario y permitir el acceso a la aplicación
    * [22/07/2019] /acuxin
    * @param data
   **/
-  const login = async (data) => {
+  const login = async (data, closeSnackBar) => {
     const url = apisUrl.login.api;
-    
+
     try {
       const res = await axios.post(url, data);
-      console.log(res.data);
+      if (res.status === 200) {
+        const user = res.request.responseText;
+        localStorage.user = user
+        setUser(user);
+        setIsAuthenticated(true);
+      }
     }
     catch(error) {
-      const err = error.response;
-      if([400].indexOf(err.status) !== -1){
-        const a = <DispatchMessage isOpen={true} />
-        return a;
-      }
+      console.log(error.response);
+      const err = dispatchError(error);
+      return dispatchMessage(err.message, err.type, closeSnackBar);
     }
   };
 
@@ -44,7 +68,7 @@ export const AuthProvider = ({children}) => {
       value={{
         isAuthenticated,
         user,
-        login: (...P) => login(...P),
+        initLogin: (...P) => login(...P),
         logout: (...P) => logout(...P),
       }}
     >
