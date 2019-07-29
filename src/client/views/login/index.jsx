@@ -17,10 +17,19 @@ import { useAuth } from '../../../server/services/authentication';
 
 const Login = () => {
   const classes = styles();
-  const { initLogin, isAuthenticated } = useAuth();
+  const { initLogin, isAuthenticated, user } = useAuth();
   const [typePassword, setTypePassword] = useState("password");
   const [message, setMessage] = useState();
-  //console.log(isAuthenticated);
+
+  if (isAuthenticated || user) {
+    window.history.back();
+    }
+
+  // ========================================================================================== //
+  // FUNCIONES
+  // ========================================================================================== //
+  
+
   //Cierra el Snackbar
   const closeSnackBar = () => setMessage();
 
@@ -47,6 +56,10 @@ const Login = () => {
     const message = await initLogin(request, closeSnackBar);
     setMessage(message);
   };
+
+  // ========================================================================================== //
+  // RENDERIZACION DE LOS COMPONENTES
+  // ========================================================================================== //
 
   return (
     <Grid container component="main" className={classes.root} >
@@ -91,7 +104,7 @@ const Login = () => {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              {Labels.general.titlesViews.login}
             </Button>
             <Grid container>
               <Grid item xs>

@@ -22,18 +22,21 @@ export const dispatchMessage = (message, type, closeSnackBar) => {
   );
 };
 
-export const dispatchError = error => {
+export const dispatchError = (error, componente) => {
   const err = error.response;
   const type = "error";
+  var component = "general";
 
   if (err !== undefined) {
+    if ([500, 501].indexOf(err.status) === -1)
+      component = componente;
     return {
-      message: Messages.login.errors[err.data.type],
+      message: Messages.errors[component][err.data.type],
       type
     }
   }else {
     return {
-      message: Messages.general.errors.internalServer,
+      message: Messages.errors.general.internalServer,
       type
     }
   }

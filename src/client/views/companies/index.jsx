@@ -7,10 +7,10 @@ import ResponsiveDialog from '../../components/feedback/ResponsiveDialog';
 import * as actionTypes from '../../store/actions/actionTypes';
 import * as typesValidate from '../../helpers/validate/typesValidate';
 import * as actions from '../../store/actions';
-import { Spinner } from '../../components/feedback';
 import Table from '../../components/datadisplay/Table';
 import NewCompany from './NewCompany';
 import Validate from '../../helpers/validate';
+import Loading from '../../components/datadisplay/Loading';
 
 const status = { loadInfo: true, isThereData: false };
 
@@ -34,11 +34,6 @@ const Index = () => {
   // FUNCIONES
   // ========================================================================================== //
 
-  /**
-   * Ejecuta las funciones correpondientes para cargar
-   * la información de la vista
-   * [28/06/2019]
-  **/
   useEffect(() => {
     if(!status.loadInfo) return;
 
@@ -75,23 +70,23 @@ const Index = () => {
   const handleOpenDialog = (e) => setOpen(true);
 
   // Cierra el dialog del formulario y vacia el state company y reinica los errores
-  const handleCloseDialog = () => { 
+  const handleCloseDialog = () => {
     setOpen(false);
     setCompany({});
     resetValidations();
-  }
+  };
 
   /**
    * Obtiene la información del formulario para registrar una compañia
    * y la guarda en el state
-   * [10/07/2019]
+   * [10/07/2019] / acuxin
   **/
   const getDataCompany = e => setCompany({...company, [e.target.name]: e.target.value.trim()});
 
   /**
    * Manda a aguardar la compañia a la base de datos
    * y la agrega al state global
-   * [11/07/2019]
+   * [11/07/2019] / acuxin
   **/
   const addCompany = () => {
     const errors = Validate(validations, company);
@@ -104,12 +99,15 @@ const Index = () => {
       }});
       return;
     }
-
     //En caso de no haber errores resetea las validaciones y manda a guardar
     resetValidations();
     saveCompany(company)
-  }
+  };
 
+  /**
+   * Guarda los datos de una compañia
+   * [11/07/2019] / acuxin
+  **/
   const saveCompany = async data => {
     changeSpinner(true);
     const company = await actions.insertCompany(data)
@@ -121,7 +119,7 @@ const Index = () => {
   
   /**
    * Función que reseta las validaciones del formulario
-   * [11/07/2019]
+   * [11/07/2019] / acuxin
   **/
   const resetValidations = () => {
     setValidations({...validations,
@@ -131,18 +129,18 @@ const Index = () => {
         data: null
       }
     });
-  }
-
+  };
+  
   // ========================================================================================== //
   // RENDERIZACION DE LOS COMPONENTES
   // ========================================================================================== //
   
   // Muestra el spinner o la información
-  const component = (status.loadInfo) ? <Spinner /> : 
+  const component = (status.loadInfo) ? <Loading /> : 
   <Table data={stateCompany.companies} columns={stateCompany.columns[state.locale.language]} title={stateCompany.titleView} handleOpenDialog={handleOpenDialog} />;
 
   //guarda el content del dialog
-  const contentDialog = (spinnerData) ? <Spinner /> :
+  const contentDialog = (spinnerData) ? <Loading /> :
   <NewCompany getDataCompany={() => getDataCompany} errors={validations.errors} />;
 
   //guarda el dialog con el form o el spinner

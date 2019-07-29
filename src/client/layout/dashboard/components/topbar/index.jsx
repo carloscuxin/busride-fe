@@ -35,7 +35,7 @@ const TopBar = (props) => {
   };
 
   return (
-    <AppBar position="fixed" className={ clsx(classes.appBar, {[classes.appBarShift]: props.isOpenDrawer}) }>
+    <AppBar position="fixed" className={ clsx(classes.appBar, {[classes.appBarShift]: props.isOpenDrawer})} id="appBar">
       <Toolbar>
         <IconButton
           color="inherit"

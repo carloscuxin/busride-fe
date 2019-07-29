@@ -45,7 +45,7 @@ const MySnackbar = props => {
 
 MySnackbar.propTypes = {
   className: PropTypes.string,
-  message: PropTypes.string,
+  message: PropTypes.object,
   onClose: PropTypes.func,
   variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };

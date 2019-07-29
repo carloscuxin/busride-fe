@@ -1,38 +1,48 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 //Own components
-import { Messages } from '../../client/helpers/messages';
 import { dispatchMessage, dispatchError } from '../middleware/manageErrors';
 import * as routes from '../routes';
 const apisUrl = routes.login;
 
+const DEFAULT_REDIRECT_CALLBACK = () =>
+  window.history.replaceState({}, document.title, window.location.pathname);
+
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
-export const AuthProvider = ({children, intl}) => {
+export const AuthProvider = ({
+  children,
+  onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
+}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState();
-  console.log('object')
+  const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     const initAuth = async () => {
       const url = apisUrl.isAuthenticated.api;
-      const user = localStorage.user;
-
-      const res = await axios.get(url, {headers: {user}});
-      const isAuthenticated = res.data;
-      setIsAuthenticated(isAuthenticated);
+      const token = localStorage.token;
       
+      try {
+        const res = await axios.get(url, {headers: {Authorization: token}});
+        const isAuthenticated = res.data;
+        setIsAuthenticated(isAuthenticated);
+      }
+      catch(error) {logout();}
+
       if (isAuthenticated) {
-        setUser(JSON.parse(user));
+        setUser(JSON.parse(localStorage.user));
       }
 
+      setLoading(false);
     }
-    console.log('useef')
+    
     initAuth();
-  }, []);
+  }, [isAuthenticated]);
   
   /**
    * Función para logear al usuario y permitir el acceso a la aplicación
-   * [22/07/2019] /acuxin
+   * [22/07/2019] / acuxin
    * @param data
   **/
   const login = async (data, closeSnackBar) => {
@@ -41,34 +51,53 @@ export const AuthProvider = ({children, intl}) => {
     try {
       const res = await axios.post(url, data);
       if (res.status === 200) {
-        const user = res.request.responseText;
-        localStorage.user = user
-        setUser(user);
+        const user = res.data;
+        setUser(user.user);
+        setUserLocale(user);
         setIsAuthenticated(true);
+        onRedirectCallback({targetUrl: localStorage.pathname});
       }
     }
     catch(error) {
-      console.log(error.response);
-      const err = dispatchError(error);
+      const err = dispatchError(error, "login");
       return dispatchMessage(err.message, err.type, closeSnackBar);
     }
   };
 
   /**
    * Función para deslogear al usuario y salir de la aplicación
-   * [22/07/2019] /acuxin
+   * [22/07/2019] / acuxin
   **/
   const logout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    setUser();
+    setLoading(true)
+    setIsAuthenticated(false);
   };
+
+  /**
+   * Función que asigna al user en en localsorage
+   * [27/07/2019] / acuxin
+  **/
+  const setUserLocale = user => {
+    localStorage.user = JSON.stringify(user.user);
+    localStorage.token = user.token;
+  };
+
+  //Devuelve el token actual
+  const getToken = () => localStorage.token;
 
   return (
     <AuthContext.Provider
       value={{
         isAuthenticated,
         user,
+        loading,
+        onRedirectCallback: (...P) => onRedirectCallback(...P),
         initLogin: (...P) => login(...P),
         logout: (...P) => logout(...P),
+        getToken: (...P) => getToken(...P),
       }}
     >
       {children}

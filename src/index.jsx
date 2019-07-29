@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 // Own components
-
 import StoreProvider from './client/store/Store';
-import config from './config';
+import { AuthProvider } from "./server/services/authentication";
 
 // A function that routes the user to the right place after login
 const onRedirectCallback = appState => {
@@ -17,9 +16,17 @@ const onRedirectCallback = appState => {
   );
 };
 
+if (!window.location.pathname !== localStorage.pathname) {
+  localStorage.pathname = window.location.pathname;
+}
+
 const app = (
   <StoreProvider>
-    <App />
+    <AuthProvider
+      onRedirectCallback={onRedirectCallback}
+    >
+      <App />
+    </AuthProvider>
   </StoreProvider>
 );
 

@@ -5,7 +5,6 @@ import * as actionTypes from './actionTypes';
 
 const apisUrl = routes.companies;
 
-
 // ========================================================================================== //
 // ACCIONES PARA OBTENER LAS COLUMNAS DE LA TABLA COMPAÑIAS
 // ========================================================================================== //
@@ -83,9 +82,10 @@ const fetchCompaniesSuccess = companies => ({
 **/
 export const fetchCompanies = async () => {
   const url = apisUrl.getAll.api;
+  const token = localStorage.token;
   fetchCompaniesStart();
   try {
-    const res = await axios.get(url);
+    const res = await axios.get(url, {headers: {Authorization: token}});
     return fetchCompaniesSuccess(res.data);
   }
   catch(error) { return fetchCompaniesFail(error.response); }

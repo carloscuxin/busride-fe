@@ -10,12 +10,15 @@ export const Messages = {
       length: <FormattedMessage id="validation.length" defaultMessage="El campo debe tener una longitud entre {minLength} y {maxLength}" values={{}} />,
       email: <FormattedMessage id="validation.email" defaultMessage="El correo no es válido" />,
     },
-    errors: {
-      internalServer: <FormattedMessage id="error.general.internalServer" defaultMessage="No se pudo conectar al servidor. Por favor, intente de nuevo más tarde." />,
-    }
   },
   login: {
-    errors: {
+    
+  },
+  errors: {
+    general: {
+      internalServer: <FormattedMessage id="error.general.internalServer" defaultMessage="No se pudo conectar al servidor. Por favor, intente de nuevo más tarde." />,
+    },
+    login: {
       badRequest: <FormattedMessage id="error.login.badRequest" defaultMessage="Usuario o contraseña incorrectos" />,
     },
   },

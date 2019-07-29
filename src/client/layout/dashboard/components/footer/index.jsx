@@ -7,7 +7,7 @@ import styles from './styles';
 const Footer = () => {
   const classes = styles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="footer">
       <Divider />
       <Typography
         className={classes.company}
