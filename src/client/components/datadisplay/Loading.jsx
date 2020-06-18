@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 //Own components
-import { Spinner } from '../feedback';
+import Spinner from '../feedback/Spinner';
 
 const useStyles = makeStyles(theme => ({
   root: {

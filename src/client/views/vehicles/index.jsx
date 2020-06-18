@@ -6,7 +6,7 @@ import Contex from '../../store/Context';
 import * as actionTypes from '../../store/actions/actionTypes';
 import * as actions from '../../store/actions';
 import Table from '../../components/datadisplay/Table';
-import { Spinner } from '../../components/feedback';
+import { Loading } from '../../components';
 
 const status = { loadInfo: true, isThereData: false };
 const Index = () => {
@@ -51,7 +51,7 @@ const Index = () => {
   }, [state, dispatch]);
 
   // Muestra el spinner o la información
-  let component = <Spinner />;
+  let component = <Loading />;
   if (!status.loadInfo) {
     component = <Table data={stateVehicle.vehicles} columns={stateVehicle.columns[state.locale.language]} title={stateVehicle.titleView} />;
   }

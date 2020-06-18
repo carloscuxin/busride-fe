@@ -7,7 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import styles from './styles';
 import { SideBar, TopBar, Footer } from './components';
 
-
 const Dashboard = (props) => {
   const classes = styles();
   const [isOpenDrawer, setStatusDrawer] = React.useState(true);

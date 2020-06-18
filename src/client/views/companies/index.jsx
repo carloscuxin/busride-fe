@@ -3,14 +3,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Dashboard as DashboardLayout } from '../../layout/index';
 import { Labels } from '../../helpers/messages';
 import Contex from '../../store/Context';
-import ResponsiveDialog from '../../components/feedback/ResponsiveDialog';
+import { ResponsiveDialog, Loading, Table } from '../../components';
 import * as actionTypes from '../../store/actions/actionTypes';
 import * as typesValidate from '../../helpers/validate/typesValidate';
 import * as actions from '../../store/actions';
-import Table from '../../components/datadisplay/Table';
 import NewCompany from './NewCompany';
 import Validate from '../../helpers/validate';
-import Loading from '../../components/datadisplay/Loading';
 
 const status = { loadInfo: true, isThereData: false };
 

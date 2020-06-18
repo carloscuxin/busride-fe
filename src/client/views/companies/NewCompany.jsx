@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 //Own components
 import { Labels } from '../../helpers/messages';
-import * as Input from '../../components/inputs';
+import { InputTextField } from '../../components';
 import styles from './styles';
 
 const NewCompany = (props) => {
@@ -22,7 +22,7 @@ const NewCompany = (props) => {
       {/* Input business_name */}
       <Grid container spacing={3}>
         <Grid item xs>
-          <Input.TextField
+          <InputTextField
             onChange={props.getDataCompany()}
             label={Labels.companies.forms.labels.businessName}
             name="business_name"
@@ -41,7 +41,7 @@ const NewCompany = (props) => {
       {/* Input commercial_name */}
       <Grid container spacing={3}>
         <Grid item xs>
-          <Input.TextField 
+          <InputTextField 
             onChange={props.getDataCompany()}
             label={Labels.companies.forms.labels.commercialName}
             name="commercial_name"
@@ -60,7 +60,7 @@ const NewCompany = (props) => {
       {/* Input phone y email */}
       <Grid container spacing={3}>
         <Grid item xs>
-          <Input.TextField
+          <InputTextField
             onChange={props.getDataCompany()}
             label={Labels.companies.forms.labels.phone}
             name="phone"
@@ -75,7 +75,7 @@ const NewCompany = (props) => {
           </Typography>
         </Grid>
         <Grid item xs>
-          <Input.TextField
+          <InputTextField
             onChange={props.getDataCompany()}
             label={Labels.companies.forms.labels.email}
             name="email"
@@ -94,7 +94,7 @@ const NewCompany = (props) => {
       {/* Input web_page */}
       <Grid container spacing={3}>
         <Grid item xs>
-          <Input.TextField
+          <InputTextField
             onChange={props.getDataCompany()}
             label={Labels.companies.forms.labels.webPage}
             name="web_page"

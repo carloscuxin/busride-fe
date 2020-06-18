@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 import { Avatar, Divider, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Typography } from '@material-ui/core';
 // Own components
 import { Labels } from '../../../../helpers/messages';
+import { useAuth } from '../../../../../server/services/authentication';
 import styles from './styles';
 
-
 const SideBar = () => {
+  const { user } = useAuth();
   const classes = styles();
   const menuList = [
     { label: Labels.sidebar.titlesMenu.dashboard, url: '/', icon: 'dashboard' },
@@ -44,7 +45,7 @@ const SideBar = () => {
             src="/images/profiles/no_profile.png" />
         </Link>
         <Typography className={classes.nameText} variant="h6">
-          User name
+          {user.username}
         </Typography>
         <Typography className={classes.bioText} variant="caption">
           Job

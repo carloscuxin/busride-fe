@@ -2,7 +2,7 @@ import React from 'react';
 import { Snackbar } from '@material-ui/core';
 //Own components
 import { Messages } from '../../client/helpers/messages';
-import { MySnackBar } from '../../client/components/feedback';
+import { MySnackBar } from '../../client/components';
 
 export const dispatchMessage = (message, type, closeSnackBar) => {
   return (

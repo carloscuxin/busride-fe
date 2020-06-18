@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 //Own components
-import FullScreenDialog from '../../components/feedback/ResponsiveDialog';
+import { FullScreenDialog } from '../../components';
 import * as Input from '../../components/inputs';
 
 const styles = makeStyles(theme => ({

@@ -20,25 +20,26 @@ export const AuthProvider = ({
   
   useEffect(() => {
     const initAuth = async () => {
-      const url = apisUrl.isAuthenticated.api;
-      const token = localStorage.token;
-      
-      try {
-        const res = await axios.get(url, {headers: {Authorization: token}});
-        const isAuthenticated = res.data;
-        setIsAuthenticated(isAuthenticated);
-      }
-      catch(error) {logout();}
+      const token = getToken();
 
-      if (isAuthenticated) {
-        setUser(JSON.parse(localStorage.user));
+      if (!token) {
+        logout();
+        onRedirectCallback(null, false);
       }
+      
+      const isAuthenticated = await validateToken(token);
+      setIsAuthenticated(isAuthenticated);
+      
+      if (!isAuthenticated) {
+        logout();
+        onRedirectCallback(null, false);
+      }else setUser(JSON.parse(localStorage.user));
 
       setLoading(false);
     }
     
     initAuth();
-  }, [isAuthenticated]);
+  }, [onRedirectCallback]);
   
   /**
    * Función para logear al usuario y permitir el acceso a la aplicación
@@ -55,7 +56,6 @@ export const AuthProvider = ({
         setUser(user.user);
         setUserLocale(user);
         setIsAuthenticated(true);
-        onRedirectCallback({targetUrl: localStorage.pathname});
       }
     }
     catch(error) {
@@ -77,6 +77,18 @@ export const AuthProvider = ({
   };
 
   /**
+   * Función que verifica si el token aun es valido
+   * [29/07/2019] / acuxin
+  **/
+  const validateToken = async token => {
+    const url = apisUrl.isAuthenticated.api;
+    try {
+      const res = await axios.get(url, {headers: {Authorization: token}});
+      return res.data;
+    }catch (error) {return false;}
+  };
+
+  /**
    * Función que asigna al user en en localsorage
    * [27/07/2019] / acuxin
   **/
@@ -87,6 +99,8 @@ export const AuthProvider = ({
 
   //Devuelve el token actual
   const getToken = () => localStorage.token;
+  //Devuelve usuario actual
+  //const getUser = () => localStorage.user;
 
   return (
     <AuthContext.Provider
